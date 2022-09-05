@@ -1,0 +1,27 @@
+{
+  "name": "calendar-app-server",
+  "version": "1.0.0",
+  "description": "Server for calendar app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Calendar",
+    "app",
+    "server",
+    "nodejs"
+  ],
+  "author": "Atif Sultan",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "express-jwt": "^7.7.5",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^4.9.1",
+    "mongoose": "^6.5.4"
+  }
+}
