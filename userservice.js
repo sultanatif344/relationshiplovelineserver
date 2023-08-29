@@ -2,11 +2,14 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const db = require("./db");
 const User = db.User;
+const EventsModel = db.Events;
 
 module.exports = {
   authenticate,
   create,
   getById,
+  saveEvent,
+  getEventById,
 };
 
 async function authenticate({ email, password }) {
@@ -43,4 +46,14 @@ async function create(userParam) {
 
 async function getById(id) {
   return await User.findById(id);
+}
+
+async function saveEvent(eventDetails) {
+  const events = new EventsModel(eventDetails);
+
+  await events.save();
+}
+
+async function getEventById(id) {
+  return await EventsModel.find({}).where("userid").equals(id);
 }
