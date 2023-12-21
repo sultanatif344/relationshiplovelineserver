@@ -4,7 +4,9 @@
   "description": "Server for calendar app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "keywords": [
     "Calendar",
@@ -17,12 +19,14 @@
   "dependencies": {
     "bcrypt": "^5.0.1",
     "body-parser": "^1.20.0",
+    "cloudinary": "^1.41.1",
     "cors": "^2.8.5",
     "express": "^4.18.1",
     "express-jwt": "^7.7.5",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^4.9.1",
     "mongoose": "^6.5.4",
-    "nodemon": "^2.0.20"
+    "node-email-validator": "^1.1.1",
+    "nodemon": "^2.0.22"
   }
 }

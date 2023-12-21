@@ -10,6 +10,8 @@ module.exports = {
   getById,
   saveEvent,
   getEventById,
+  UploadImageToCloudinary,
+  getAllUsers
 };
 
 async function authenticate({ email, password }) {
@@ -28,8 +30,8 @@ async function authenticate({ email, password }) {
 async function create(userParam) {
   // validate
   console.log(userParam);
-  if (await User.findOne({ username: userParam.email })) {
-    throw 'Username "' + userParam.username + '" is already taken';
+  if (await User.findOne({ email: userParam.email })) {
+    throw 'Id with email "' + userParam.email + '" is already registered';
   }
 
   const user = new User(userParam);
@@ -44,8 +46,40 @@ async function create(userParam) {
   return 1;
 }
 
+async function UploadImageToCloudinary(base64Image) {
+  try {
+    const cloudinary = require('cloudinary');
+    console.log("base64Image: ", base64Image)
+    cloudinary.v2.config({
+      cloud_name: 'doeu0erh2',
+      api_key: '574164989263918',
+      api_secret: 'sHVuIkze2OlMnhJa9bzH0vDO5zA',
+      secure: true,
+    });
+
+    const uploadResult = cloudinary.v2.uploader.upload("data:image/jpeg;base64," + base64Image, {
+      resource_type: "image",
+      width: 300,
+      height: 300,
+      crop: "fill"
+    }).catch(err => {
+      console.log(err)
+    })
+    return uploadResult
+  }
+
+  catch (err) {
+    return err
+  }
+
+}
+
 async function getById(id) {
   return await User.findById(id);
+}
+
+async function getAllUsers() {
+  return await User.find({});
 }
 
 async function saveEvent(eventDetails) {
