@@ -1,3 +1,3 @@
 module.exports = {
-  database: "mongodb://localhost:27017",
+  database: "mongodb+srv://sutlanatif344:bugs&fixes@cluster0.xzqr6.mongodb.net/?retryWrites=true&w=majority",
 };
